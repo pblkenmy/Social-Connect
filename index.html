@@ -3,36 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WittConnect</title>
+    <title>Witt Connect</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #f4f4f4;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        nav a:hover {
+            background-color: #ddd;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .post {
+            margin-bottom: 40px;
+        }
+        .post h2 {
+            color: #333;
+        }
+        .post p {
+            color: #666;
+        }
+        #login-form,
+        #post-form,
+        #create-account-form {
+            display: none;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <div class = "logo">
-            <h1 class = "logo-text"><span>Social-</span>Connect</h1>
-        </div>
-        <ul class="nav">
-            <li><a href = "#">Home</a></li>
-            <li><a href = "#">About</a></li>
-            <!-- <li><a href = "#">Login</a></li>
-            <li><a href = "#">Sign Up</a></li> -->
-            <li>
-                <a href = "#">cainep</a></li>
-                <ul>
-                    <li><a href = "#">Home</a></li>
-                    <li><a href = "#" class="logout">Logout</a></li>
-                </ul>
-            </li>
-        </ul>
-    </header>    
-    <div>
-        <!-- Blog Post -->
-        <div class = "main-content">
-            <h1 class="recent-post-title">Posts</h1>
-            <div class="post">
-
-            </div>
-        </div>
+        <h1>Witt Connect</h1>
+    </header>
+    <nav>
+        <a href="#" onclick="showHome()">Home</a>
+        <a href="#" onclick="showAbout()">About</a>
+        <a href="#" onclick="showContact()">Contact</a>
+        <a href="#" onclick="showLoginForm()">Login</a>
+        <a href="#" onclick="showPostForm()">Post</a>
+        <a href="#" onclick="showCreateAccountForm()">Create Account</a>
+    </nav>
+    <div class="container" id="content">
+        <!-- Content will be dynamically loaded here -->
     </div>
-</body>
 
+    <div class="container" id="login-form">
+        <h2>Login</h2>
+        <form>
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username"><br>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password"><br><br>
+            <button type="button" onclick="login()">Login</button>
+        </form>
+    </div>
+
+    <div class="container" id="post-form" style="display:none;">
+        <h2>New Post</h2>
+        <form>
+            <label for="title">Title:</label><br>
+            <input type="text" id="title" name="title"><br>
+            <label for="content">Content:</label><br>
+            <textarea id="content" name="content"></textarea><br><br>
+            <button type="button" onclick="post()">Post</button>
+        </form>
+    </div>
+
+    <div class="container" id="create-account-form" style="display:none;">
+        <h2>Create New Account</h2>
+        <form>
+            <label for="new-username">Username:</label><br>
+            <input type="text" id="new-username" name="new-username"><br>
+            <label for="new-password">Password:</label><br>
+            <input type="password" id="new-password" name="new-password"><br><br>
+            <button type="button" onclick="createAccount()">Create Account</button>
+        </form>
+    </div>
+
+    <script>
+        function showHome() {
+            document.getElementById('content').innerHTML = `
+                <div class="post">
+                    <h2>Home</h2>
+                    <p>This is the home page where the blogs will be.</p>
+                </div>
+            `;
+        }
+
+        function showAbout() {
+            document.getElementById('content').innerHTML = `
+                <div class="post">
+                    <h2>About</h2>
+                    <p>About me and this blog.</p>
+                </div>
+            `;
+        }
+
+        function showContact() {
+            document.getElementById('content').innerHTML = `
+                <div class="post">
+                    <h2>Contact</h2>
+                    <p>Contact information.</p>
+                </div>
+            `;
+        }
+
+        function showLoginForm() {
+            document.getElementById('login-form').style.display = 'block';
+            document.getElementById('post-form').style.display = 'none';
+            document.getElementById('create-account-form').style.display = 'none';
+        }
+
+        function showPostForm() {
+            document.getElementById('post-form').style.display = 'block';
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('create-account-form').style.display = 'none';
+        }
+
+        function showCreateAccountForm() {
+            document.getElementById('create-account-form').style.display = 'block';
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('post-form').style.display = 'none';
+        }
+
+        function login() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            // Implement authentication logic here
+            alert("Login button clicked with username: " + username + " and password: " + password);
+        }
+
+        function post() {
+            var title = document.getElementById('title').value;
+            var content = document.getElementById('content').value;
+            // Implement blog post submission logic here
+            alert("Post button clicked with title: " + title + " and content: " + content);
+        }
+
+        function createAccount() {
+            var newUsername = document.getElementById('new-username').value;
+            var newPassword = document.getElementById('new-password').value;
+            // Implement account creation logic here
+            alert("Create Account button clicked with username: " + newUsername + " and password: " + newPassword);
+        }
+    </script>
+</body>
 </html>
