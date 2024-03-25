@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Witt Connect</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #f4f4f4;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        nav a:hover {
+            background-color: #ddd;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .post {
+            margin-bottom: 40px;
+        }
+        .post h2 {
+            color: #333;
+        }
+        .post p {
+            color: #666;
+        }
+        #login-form,
+        #post-form,
+        #create-account-form {
+            display: none;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Witt Connect</h1>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Login</a>
+        <a href="post.html">Post</a>
+        <a href="create-account.html">Create Account</a>
+    </nav>
+
+    <div id="post">
+        <h2>About</h2>
+        <p>About me and this blog.</p>
+    </div>
+
+    <script>
+        function showAbout() {
+            document.getElementById("post");
+        }
+    </script>
+</body>
+</html>
