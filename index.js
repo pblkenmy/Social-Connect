@@ -1,3 +1,69 @@
+function showLoginForm() {
+    document.getElementById('login-or-register').style.display = 'none';
+    document.getElementById('login-form').style.display = 'block';
+}
+
+function showCreateAccountForm() {
+    document.getElementById('login-or-register').style.display = 'none';
+    document.getElementById('create-account-form').style.display = 'block';
+}
+
+function login() {
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "login.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
+            if (response.success) {
+                alert(response.message);
+                window.location.href = "home.html"; // Redirects to home.html after login
+            } else {
+                alert(response.message);
+            }
+        }
+    };
+    xhr.send("username=" + encodeURIComponent(username) + "&password=" + encodeURIComponent(password));
+}
+
+function createAccount() {
+    var newUsername = document.getElementById('new-username').value;
+    var newPassword = document.getElementById('new-password').value;
+
+    // Regular expressions for password complexity checks
+    var uppercaseRegex = /[A-Z]/;
+    var lowercaseRegex = /[a-z]/;
+    var specialCharRegex = /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/;
+
+    // Check if password meets complexity requirements
+    if (!uppercaseRegex.test(newPassword) || 
+        !lowercaseRegex.test(newPassword) || 
+        !specialCharRegex.test(newPassword)) {
+        alert("Password must contain at least one uppercase letter, one lowercase letter, and one special character.");
+        return;
+    }
+
+    // Proceed with registration if password meets complexity requirements
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "register.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
+            if (response.success) {
+                alert(response.message);
+                window.location.href = "home.html"; // Redirect to home.html
+            } else {
+                alert(response.message);
+            }
+        }
+    };
+    xhr.send("new-username=" + encodeURIComponent(newUsername) + "&new-password=" + encodeURIComponent(newPassword));
+}
+
 // An array to store events
 let events = [];
  
