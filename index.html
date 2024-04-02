@@ -5,64 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
     <title>Witt Connect</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        h2 {
-            margin: auto;
-            width: 50%;
-            padding: 10px;
-            text-align: left;
-        }
-        p {
-            margin: auto;
-            width: 50%;
-            padding: 10px;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-        nav {
-            background-color: #f4f4f4;
-            padding: 10px;
-            text-align: center;
-        }
-        nav a {
-            text-decoration: none;
-            color: #333;
-            padding: 10px 20px;
-            cursor: pointer;
-        }
-        nav a:hover {
-            background-color: #ddd;
-        }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 0 20px;
-        }
-        .post {
-            margin-bottom: 40px;
-        }
-        .post h2 {
-            color: #333;
-        }
-        .post p {
-            color: #666;
-        }
-        #login-form,
-        #post-form,
-        #create-account-form {
-            display: none;
-            margin-bottom: 20px;
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -70,14 +12,41 @@
     </header>
     <nav>
         <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="login.html">Login</a>
-        <a href="post.html">Post</a>
-        <a href="create-account.html">Create Account</a>
     </nav>
+    <div class="container">
+        <div id="login-or-register">
+            <h2>Welcome to Witt Connect!</h2>
+            <p>Please select an option:</p>
+            <button onclick="showLoginForm()">Login</button>
+            <button onclick="showCreateAccountForm()">Create Account</button>
+        </div>
 
-    <h2>Home</h2>
-    <p>This website is in its early stages of development. You can create a user and login to post on our community calendar. We ask you to please use our website kindly and respectfully.</p>
+        <!-- Login Form -->
+        <div id="login-form" style="display: none;">
+            <h2>Login</h2>
+            <form>
+                <label for="username">Username:</label><br>
+                <input type="text" id="username" name="username" required><br>
+                <label for="password">Password:</label><br>
+                <input type="password" id="password" name="password" required><br><br>
+                <button type="button" onclick="login()">Login</button>
+            </form>
+        </div>
+
+        <!-- Create Account Form -->
+        <div id="create-account-form" style="display: none;">
+            <h2>Create New Account</h2>
+            <form>
+                <label for="new-username">Username:</label><br>
+                <input type="text" id="new-username" name="new-username" required><br>
+                <label for="new-password">Password:</label><br>
+                <input type="password" id="new-password" name="new-password" required><br><br>
+                <button type="button" onclick="createAccount()">Create Account</button>
+            </form>
+        </div>
+
+    </div>
+
+    <script src="index.js"></script>
 </body>
 </html>
