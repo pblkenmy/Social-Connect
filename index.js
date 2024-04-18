@@ -1,35 +1,51 @@
+// Function to display the login form
 function showLoginForm() {
+    // Hide the login-or-register section and display the login form
     document.getElementById('login-or-register').style.display = 'none';
     document.getElementById('login-form').style.display = 'block';
 }
 
+// Function to display the create account form
 function showCreateAccountForm() {
+    // Hide the login-or-register section and display the create account form
     document.getElementById('login-or-register').style.display = 'none';
     document.getElementById('create-account-form').style.display = 'block';
 }
 
+// Function to handle the login process
 function login() {
+    // Retrieve the username and password from the input fields
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
 
+    // Create a new XMLHttpRequest object
     var xhr = new XMLHttpRequest();
+    // Specify the HTTP method, URL, and asynchronous flag
     xhr.open("POST", "login.php", true);
+    // Set the request header
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    // Define the function to handle the response
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
+            // Parse the JSON response
             var response = JSON.parse(xhr.responseText);
+            // Display a success message if login is successful, otherwise display an error message
             if (response.success) {
                 alert(response.message);
-                window.location.href = "home.html"; // Redirects to home.html after login
+                // Redirect to home.html after successful login
+                window.location.href = "home.html";
             } else {
                 alert(response.message);
             }
         }
     };
+    // Send the request with username and password as parameters
     xhr.send("username=" + encodeURIComponent(username) + "&password=" + encodeURIComponent(password));
 }
 
+// Function to handle the account creation process
 function createAccount() {
+    // Retrieve the new username and password from the input fields
     var newUsername = document.getElementById('new-username').value;
     var newPassword = document.getElementById('new-password').value;
 
@@ -55,14 +71,17 @@ function createAccount() {
             var response = JSON.parse(xhr.responseText);
             if (response.success) {
                 alert(response.message);
-                window.location.href = "home.html"; // Redirect to home.html
+                // Redirect to home.html after successful registration
+                window.location.href = "home.html";
             } else {
                 alert(response.message);
             }
         }
     };
+    // Send the request with new username and password as parameters
     xhr.send("new-username=" + encodeURIComponent(newUsername) + "&new-password=" + encodeURIComponent(newPassword));
 }
+
 
 // An array to store events
 let events = [];
