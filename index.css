@@ -74,7 +74,7 @@ body {
     left: 0;
 }
  
-/* event tooltip styling */
+/* event tool tip styling */
 .event-tooltip {
     position: absolute;
     background-color: rgba(234, 232, 232, 0.763);
@@ -175,7 +175,7 @@ body {
     /* Friday */
 }
  
-/* Hover effect for date cells */
+/* Hover effect for date */
 .date-picker:hover {
     background-color: red;
     color: white;
